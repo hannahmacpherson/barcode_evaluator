@@ -32,7 +32,7 @@ What to do to run the script:
 
 	If I want to find the barcode success rates for DRB1 using all the polymerases I've used in my input file, I would type:
 
-	python3 barcodes.py hannahs_import_file.csv DRB1
+	python3 main.py hannahs_import_file.csv DRB1
 
 
 -----------------------------------------------
