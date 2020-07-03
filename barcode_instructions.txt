@@ -1,0 +1,65 @@
+Hello, this script will evaluate the percentage success rate for each barcode in your data. It filters by gene, and can also be used to filter by polymerase. It will plot these values in a graph, and then give you the option to save a csv file with the % success rates of every barcode in your filtered set.
+
+-----------------------------------------------
+
+You will need: 
+
+- A csv file of all amps you may be interested in, with a column headed 'barcode', a column headed 'sample_ID' and a column headed 'pass_fail'. If you want to sort by polymerase, you will also need a column headed 'polymerase'.
+	. Extra columns are not a problem, don't bother trimming them off
+	. Extra amp info for genes you aren't interested in also aren't a problem
+	. Data in the barcode column can be formatted however you want (eg 004, 4, 004F-004R) as long as it's the same throughout your csv file.
+	. Data in the pass_fail column needs to be either PASSED or FAILED.
+
+- You will need to make sure you have the items in the requirements.txt file downloaded. This can be done via the terminal, but essentially they are python modules which allow you to eg plot graphs. For more info on this, I wrote a little bit below.
+
+
+-----------------------------------------------
+
+Sorting out your requirements:
+
+. Check you have the latest version of python3 (type python --version into the terminal. It should be 3.8 I think. If not, download it)
+. See if you have pip: (type pip --version into the terminal). If not, download it
+. Once pip and python are downloaded, one by one type/paste in the following:
+		
+		pip install numpy
+		pip install pandas
+		pip install matplotlib
+		pip install seaborn
+
+. If you're interested, each of these are python modules that give you extra functions, eg seaborn is for graph plotting.
+
+-----------------------------------------------
+
+What to do to run the script:
+
+1) Navigate to the folder where you have put both barcodes.py and your input csv file. Do this by typing in:
+cd /Users/hannahmacpherson/Documents/python_practice/Projects/barcode_evaluator
+
+	** NB I need to update that bit above if other people are going to use it **
+
+	If you want to double check you're in the right place, type in ls and it should list everything in that folder, including those files. 
+
+
+
+3) Type in what you want in the following way:
+
+
+	python3 barcodes.py import_file.csv gene polymerase
+
+	*** NB polymerase is optional, if you don't write one then it will default to all data for that gene. Make sure you spell the gene and polymerase as they're written in your input file (case sensitive). ***
+
+
+	So for example, if I want to find the barcode success rates for DRB1 using VeriFi polymerase, I would type:
+
+	python3 barcodes.py hannahs_import_file.csv DRB1 VeriFi
+
+
+	If I want to find the barcode success rates for DRB1 using all the polymerases I've used in my input file, I would type:
+
+	python3 barcodes.py hannahs_import_file.csv DRB1
+
+
+-----------------------------------------------
+
+Hannah 04/06/2020
+
