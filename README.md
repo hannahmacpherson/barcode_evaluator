@@ -5,10 +5,11 @@ Hello, this script will evaluate the percentage success rate for each barcode in
 You will need: 
 
 - A csv file of all amps you may be interested in, with a column headed 'barcode', a column headed 'sample_ID' and a column headed 'pass_fail'. If you want to sort by polymerase, you will also need a column headed 'polymerase'.
-	. Extra columns are not a problem, don't bother trimming them off
-	. Extra amp info for genes you aren't interested in also aren't a problem. Just do a bulk export and use that data.
-	. Data in the barcode column can be formatted however you want (eg 004, 4, 004F-004R) as long as it's the same throughout your csv file.
-	. Data in the pass_fail column needs to be either PASSED or FAILED, as per your own criteria.
+
+	1) Extra columns are not a problem, don't bother trimming them off
+	2) Extra amp info for genes you aren't interested in also aren't a problem. Just do a bulk export and use that data.
+	3) Data in the barcode column can be formatted however you want (eg 004, 4, 004F-004R) as long as it's the same throughout your csv file.
+	4) Data in the pass_fail column needs to be either PASSED or FAILED, as per your own criteria.
 
 
 -----------------------------------------------
