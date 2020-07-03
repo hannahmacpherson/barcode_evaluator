@@ -7,13 +7,19 @@ def barcode_report(amp_csv, gene, polymerase="all"):
     print(f"How many best/worst barcodes do you want to be given in your report?")
     print("")
 
+
+    # define if you want a certain number of best/worst barcodes in your final report
     number_of_barcodes_valid = False
 
     while number_of_barcodes_valid == False:
         number_of_barcodes = input()
         try:
             number_of_barcodes = int(number_of_barcodes)
-            number_of_barcodes_valid = True
+            if number_of_barcodes > -1:
+                number_of_barcodes_valid = True
+            else: 
+                number_of_barcodes_valid = False
+                print("Please type a number 0 or above")
         except TypeError:
             print("Please type a number")
 
@@ -36,7 +42,7 @@ def barcode_report(amp_csv, gene, polymerase="all"):
     # create a dataframe of success rate per barcode 
     success_df = barcode_success_rate(amp_dataframe)
 
-    # create a dataframe for best and worst barcodes (separate)
+    # create a dataframe for best and worst barcodes (unless you wanted 0 in the input above)
     if number_of_barcodes != 0:
         best_worst_barcodes = True
         best_and_worst_barcodes(amp_dataframe, number_of_barcodes)
@@ -51,18 +57,20 @@ def barcode_report(amp_csv, gene, polymerase="all"):
 
     print("")
     print(f"Your input {amp_csv} contains {number_of_amps} amplifications specific to {gene} using {polymerase} polymerase(s)")
-    print(f"The mean number of amps per barcode is {mean_bc_amps}.")
+    print(f"The mean number of amps per barcode is {mean_bc_amps:.2f}")
 
     if best_worst_barcodes == True:
         print("")
         print("Your best barcode options are:")
         print("")
-        print(best_and_worst_barcodes(amp_dataframe, number_of_barcodes)[0])
+        best = best_and_worst_barcodes(amp_dataframe, number_of_barcodes)[0]
+        print(best)
 
         print("")
         print("Your worst barcode options are:")
         print("")
-        print(best_and_worst_barcodes(amp_dataframe, number_of_barcodes)[1])
+        worst = best_and_worst_barcodes(amp_dataframe, number_of_barcodes)[1]
+        print(worst)
 
     print("")
     print("Plotting success rate per barcode...")
@@ -85,3 +93,5 @@ def barcode_report(amp_csv, gene, polymerase="all"):
     if save_bc_printable == "y":
         to_save = barcode_success_rate(amp_dataframe)
         save_df_to_csv_tabbed(to_save, gene, polymerase)
+
+    

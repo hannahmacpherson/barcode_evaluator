@@ -15,7 +15,7 @@ def make_dataframe(amp_csv, gene, polymerase='all'):
         df = df.loc[df['polymerase'] == polymerase]
     rows = row_counter(df)
     if rows == 0: # aka dataframe is empty
-        sys.exit("Filtered data has zero rows, the gene or polymerase may be different to how they are written in your input file.")
+        sys.exit("Filtered data has zero rows, the gene or polymerase may be different to how they are written in your input file, or this gene may not be sequenced with the specified polymerase.")
     else:
         return df
 
@@ -88,32 +88,48 @@ def number_of_amps_per_barcode(df):
     return filtered_grouped_df
 
 def plot_barcode_success_rate(amp_csv, gene, polymerase='all'):
+
+    # making various bits of information i'll need
     df = make_dataframe(amp_csv, gene, polymerase)
     amps_per_bc = number_of_amps_per_barcode(df)
     success_rate = barcode_success_rate(df)
     number_of_amps = row_counter(df)
 
+    # merging success rates with amps per barcode
     success_and_amps_per_bc = success_rate.merge(amps_per_bc, left_on='barcode', right_on='barcode')
-    print(success_and_amps_per_bc)
 
+    # plotting (always plotting)
     plt.figure(figsize = (18,7))
     plot_order = success_and_amps_per_bc.sort_values(by='percentage_success', ascending=True).barcode.values
     
     plot = sns.barplot(x="barcode", y="percentage_success", data=success_and_amps_per_bc, order=plot_order)
     plot.set(
-        xlabel="{gene} Barcodes".format(gene=gene), 
+        xlabel=f"{gene} Barcodes", 
         ylabel = "Percentage Success Rate", 
-        title='Percentage Success for {gene} Barcodes over a Total of {number_of_amps} Amplifications using {polymerase} Polymerase(s)'.format(gene=gene, number_of_amps=number_of_amps, polymerase = polymerase))
+        title=f'Percentage Success for {gene} Barcodes over a Total of {number_of_amps} Amplifications using {polymerase} Polymerase(s)'
     plt.setp(plot.get_xticklabels(), rotation=90)
     plt.setp(plot.set_yticklabels([0,20,40,60,80,100]), rotation=90)
-    #plot2 = sns.lineplot(x="barcode", y="counts", data=success_and_amps_per_bc, order=plot_order)
  
 
+# saving report info to a text file for easier reading - decided not to actually use this but don't want to delete it despite not being finished
+def save_analysis_info(amp_csv, gene, polymerase, mean_bc_amps, best_worst_barcodes, best, worst, number_of_barcodes, number_of_amps):
+
+    line_1 = f"Your input {amp_csv} contained {number_of_amps} amplifications specific to {gene} using {polymerase} polymerase(s)."
+    line_2 = f"\nThe mean number of amps per barcode was {mean_bc_amps:.2f}."
+    best_info = f"\n\nYour best {number_of_barcodes} barcode options are:\n"
+    worst_info = f"\n\nYour worst {number_of_barcodes} barcode options are:\n"
+
+    to_write = line_1 + line_2
+
+    if best_worst_barcodes == True:
+        to_write = to_write + best_info + best 
+
+    analysis_file = open(f"amp_analysis_{gene}_{polymerase}.txt", "w")
+    analysis_file.writelines(list_to_write)
+    analysis_file.close()
 
 
-
-
-
+# saves plot as you'd imagine
 def save_plot_png(amp_csv, gene, polymerase='all'):
     plot = plot_barcode_success_rate(amp_csv, gene, polymerase)
     plt.savefig(f'barcode_success_graph_for_{gene}_{polymerase}.png')

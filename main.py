@@ -2,7 +2,7 @@ from barcode_report import *
 import sys
 
 # taking user input, checking whether there are the right number of inputs
-# if correct number of inputs, sets off the report. 
+# if correct number of inputs, sets off the report (in barcode_report.py)
 
 counter = 0
 
