@@ -49,6 +49,18 @@ If I want to find the barcode success rates for DRB1 using all the polymerases I
 
 python3 main.py hannahs_import_file.csv DRB1
 
+3) You will be asked how many of the best/worst barcodes you want listed.
+
+![How many barcodes](https://github.com/hannahmacpherson/barcode_evaluator/blob/master/asking%20for%20bc%20numbers.png)
+
+4) A graph will be plotted (example below)
+
+![Example graph](https://github.com/hannahmacpherson/barcode_evaluator/blob/master/example%20graph.png)
+
+5) You'll be asked whether you want to save an additional CSV of every barcode it's used and their % success rate (prompted to type Y or N)
+
+![% success CSV](https://github.com/hannahmacpherson/barcode_evaluator/blob/master/asking%20for%20bc%20numbers.png)
+
 
 -----------------------------------------------
 
