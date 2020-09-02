@@ -106,7 +106,7 @@ def plot_barcode_success_rate(amp_csv, gene, polymerase='all'):
     plot.set(
         xlabel=f"{gene} Barcodes", 
         ylabel = "Percentage Success Rate", 
-        title=f'Percentage Success for {gene} Barcodes over a Total of {number_of_amps} Amplifications using {polymerase} Polymerase(s)'
+        title=f'Percentage Success for {gene} Barcodes over a Total of {number_of_amps} Amplifications using {polymerase} Polymerase(s)')
     plt.setp(plot.get_xticklabels(), rotation=90)
     plt.setp(plot.set_yticklabels([0,20,40,60,80,100]), rotation=90)
  
