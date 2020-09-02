@@ -20,6 +20,8 @@ What to do to run the script:
 
 2) Type in what you want in the following way:
 
+![Image explaining input](https://github.com/hannahmacpherson/barcode_evaluator/blob/master/Example%20input.png)
+
 	python3 main.py input_file.csv gene polymerase
 
 	* NB polymerase is optional, if you don't write one then it will default to all data for that gene. Make sure you spell the gene and polymerase as they're written in your input file (case sensitive). You also shouldn't have spaces within the gene or polymerase names*
