@@ -13,6 +13,17 @@ You will need:
 
 
 -----------------------------------------------
+How to set-up the script to run on your machine:
+
+1) Download the folder from GitHub
+![downloading files](https://github.com/hannahmacpherson/barcode_evaluator/blob/master/downloading%20files.png)
+
+2) Unzip the folder and put it in your Documents (I renamed mine 'barcode_evaluator_script')
+![file layout](https://github.com/hannahmacpherson/barcode_evaluator/blob/master/File%20Layout.png)
+
+3) Unzip the folder and put it in your Documents (I renamed mine 'barcode_evaluator_script')
+![file layout](https://github.com/hannahmacpherson/barcode_evaluator/blob/master/File%20Layout.png)
+
 
 What to do to run the script:
 
