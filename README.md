@@ -13,7 +13,7 @@ You will need:
 
 
 -----------------------------------------------
-How to set-up the script to run on your machine:
+How to set-up the script to run on your machine for the first time:
 
 1) Download the folder from GitHub
 ![downloading files](https://github.com/hannahmacpherson/barcode_evaluator/blob/master/downloading%20files.png)
@@ -21,31 +21,33 @@ How to set-up the script to run on your machine:
 2) Unzip the folder and put it in your Documents (I renamed mine 'barcode_evaluator_script')
 ![file layout](https://github.com/hannahmacpherson/barcode_evaluator/blob/master/File%20Layout.png)
 
-3) Unzip the folder and put it in your Documents (I renamed mine 'barcode_evaluator_script')
-![file layout](https://github.com/hannahmacpherson/barcode_evaluator/blob/master/File%20Layout.png)
+3) Navigate to the folder in Terminal and download the required packages
+![initial terminal](https://github.com/hannahmacpherson/barcode_evaluator/blob/master/initial%20terminal.png)
+
+-----------------------------------------------
+What to do to run the script each time from now on:
+
+1) Put your input CSV file in the barcode evaluator folder. Navigate to this folder in terminal and type in what you need from the script (more info below)
+
+![setting off in terminal](https://github.com/hannahmacpherson/barcode_evaluator/blob/master/setting%20off%20script.png)
 
 
-What to do to run the script:
-
-1) Navigate to the folder where you have put both the provided files and your input csv file.
-
-2) Type in what you want in the following way:
+2) The second line should be adapted in the following way:
 
 ![Image explaining input](https://github.com/hannahmacpherson/barcode_evaluator/blob/master/Example%20input.png)
 
-	python3 main.py input_file.csv gene polymerase
 
-	* NB polymerase is optional, if you don't write one then it will default to all data for that gene. Make sure you spell the gene and polymerase as they're written in your input file (case sensitive). You also shouldn't have spaces within the gene or polymerase names*
-
-
-	So for example, if I want to find the barcode success rates for DRB1 using a polymerase called HaNnaH_Taq, I would type:
-
-	python3 main.py hannahs_import_file.csv DRB1 HaNnaH_Taq
+* NB polymerase is optional, if you don't write one then it will default to all data for that gene. Make sure you spell the gene and polymerase as they're written in your input file (case sensitive). You also shouldn't have spaces within the gene or polymerase names*
 
 
-	If I want to find the barcode success rates for DRB1 using all the polymerases I've used in my input file, I would type:
+So for example, if I want to find the barcode success rates for DRB1 using a polymerase called HaNnaH_Taq, I would type:
 
-	python3 main.py hannahs_import_file.csv DRB1
+python3 main.py hannahs_import_file.csv DRB1 HaNnaH_Taq
+
+
+If I want to find the barcode success rates for DRB1 using all the polymerases I've used in my input file, I would type:
+
+python3 main.py hannahs_import_file.csv DRB1
 
 
 -----------------------------------------------
